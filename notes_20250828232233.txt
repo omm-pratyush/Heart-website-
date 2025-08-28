@@ -1,0 +1,107 @@
+08.28 10:38 PM
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart with Name</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background: #ffe6e6;
+      font-family: Arial, sans-serif;
+    }
+
+    .heart {
+      position: relative;
+      width: 200px;
+      height: 180px;
+      background: red;
+      transform: rotate(-45deg);
+      margin-top: 30px;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: red;
+    }
+
+    .heart::before {
+      top: -100px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 100px;
+      top: 0;
+    }
+
+    .name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      width: 180px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid red;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      font-size: 16px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+  <h2> Enter your name</h2>
+  <div>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="showName()">Show in Heart</button>
+  </div>
+
+  <div class="heart" id="heart" style="display:none;">
+    <div class="name" id="nameText"></div>
+  </div>
+
+  <script>
+    function showName() {
+      let name = document.getElementById("nameInput").value;
+      if (name.trim() === "") {
+        alert("Please enter a name!");
+        return;
+      }
+      document.getElementById("nameText").innerText = name;
+      document.getElementById("heart").style.display = "block";
+    }
+  </script>
+</body>
+</html>
